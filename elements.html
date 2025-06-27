@@ -42,56 +42,108 @@
 										
 										<div class="row">
 											<div class="col-6 col-12-small">
-												<h3>State of the art</h3>
-												<p>The term desertification has undergone a deep evolution over time. Originally, it was associated with sandy deserts expansion, and, only in the
-last few years, it was used to indicate a much more complex issue due to the mutual interaction of "physical, biological, political, social, cultural
-and economic factors" responsible for determining "land degradation in arid, semi-arid and dry sub-humid areas" (UNCCD, 1996 - article 1a).
-Desertification, therefore, occurs when land and water resources are degraded under certain threshold values, leading to the onset of irreversible
-changes as well as an undesirable new state. Nevertheless, the United Nations Convention to Combat Desertification (UNCCD) has grouped the
-above-mentioned causes into two main categories: "Climate Changes (CC)" and " anthropogenic activities".</p>
-											<p>.
-The zones exposed to strong anthropogenic pressure and intense climatic stress, such as those located in Central and/or Southern Italy, are
-characterized by a high intrinsic vulnerability to desertification. Thus, the territories affected by such a phenomenon are fragile ecosystems,
-typified by extremely poor productive soils due to the lack of organic matter. Identifying and adopting adequate land management strategies aimed
-at promoting sustainability and improving ecosystem services is essential to deal with soil deterioration. Despite this, because of the absence of a
-universally accepted methodological framework of "what and how to measure", the implemented actions showed ambiguous and ineffective
-results. Consequently, in recent years, the European Union is pushing its Member States to identify potential areas vulnerable to desertification, to
-improve and downscale the knowledge provided by the World Atlas of Desertification (WAD) realized in 2019.</p>	
-												<p>Tackling the desertification phenomenon implies two diverse aspects treatment: i) detection of the most relevant factors triggering desertification at
-local scale and ii) definition of the optimal technique to estimate them and to assess the corresponding risk. To date, the commonly used indicators
-are responsible for describing the relationships among the various factors as well as depicting the phenomenon advancement clearly. Although the
-first parameters date back to the 1970s, the real turning point was in 1998 when Rubio and Bochet proposed a detailed list of criteria to select and
-assess the most suitable indicators within the "MEDALUS III" European project. Their main objectives concerned variables definition and the
-development of a composite index to identify Environmentally Sensitive Areas (ESA). Although the proposed methodology has been applied for
-longer, it was not exhaustive since it did not involve social and economic components, i.e., growing population rate and density. In addition, such
-indicators depended on environmental context and, therefore, site-specific studies were carried out. Fierotti and Zanchi (1998) proposed soil
-erosion as a global indicator albeit its application is limited to hilly areas in Mediterranean Region. To extend its usage, it may be integrated with
-peculiar indicators for plains, such as vegetation cover and productivity, soil physical characteristics, and amount of organic matter. In any case,
-these parameters cannot be separated from field observations. Conversely, organic matter degradation, soil erosion, and salinization were selected as descriptors in sub-humid, arid, semi-arid, and dry areas within the EC ENVASSO project. The DESIRE project (2012), instead,
-investigated the most important parameters for evaluating soil degradation and desertification processes on a global scale. </p>
-												<p>The need to investigate the unleashed causes and the dominant factors is still challenging. Additionally, such parameters cannot be measured
-through conventional approaches, based on field data, as they are invasive and destructive as well as expensive in terms of acquisition and
-processing time. Conversely, Remote Sensing (RS) technique has proved to be much more suitable to face the problem. RS is a cost-effective,
-non-destructive tool that allows obtaining repeatable results on a large scale. It can provide multispectral, multi-resolution, and multi-temporal data
-that enable monitoring and assessment of environmental changes. To meet such purposes, Landsat and Moderate Resolution Imaging
-Spectroradiometer (MODIS) satellites were commonly applied. MODIS showed better results than Landsat thanks to the presence of the
-hyperspectral sensor albeit its products are not satisfying because of its low spatial resolution (1 km). Such outcomes could be improved thanks to
-the adoption of the most advanced satellite images, characterized by higher spatial and spectral resolution as well as a higher number of bands,
-i.e., Landsat 9, PRISMA, PlanetScope, etc. Nevertheless, a large amount of data should be handled and, thus, cloud platforms appear like the
-optimal alternative to manage them saving time and cost.</p>
+												<h3>Objectives</h3>
+												<p>The key source to investigate the desertification phenomenon is the massive availability of geospatial big data. They involve Earth Observation
+(EO) data collected by satellite platforms managed by space agencies, such as Landsat from US NASA, Copernicus with Sentinels from EU,
+Copernicus Contributing Missions, Planet, and geospatial data provided by local, national, and international portals, as Copernicus services,
+OpenStreetMap, Inspire Geoportal, Geoportal Nazionale of the Italian Ministry of the Environment. Since all these data are multi-sources, multivariables, and multi-scales, a new approach suitable for examining and combining them is essential, allowing retrieving useful information suitable
+for understanding the desertification. Nevertheless, they are not enough to investigate "slow" phenomena, like the one under investigation in this
+research, and to develop reliable services for end-users to analyze its past and future evolution. Thus, to take advantage of such data, two key
+aspects should be considered: i) the computing infrastructure required to store and handle them and ii) the algorithms needed to produce
+information</p>
+											<p>The first issue was faced in the last few years thanks to the introduction of cloud computing environments, like Google Earth Engine (GEE),
+realized by Google in 2017. GEE was developed to handle geospatial big data exploiting many processors to run customized algorithms
+simultaneously. This results in speeding the process up considerably, removing the inconvenience linked to data storage, processing, and
+analysis. Moreover, it integrates a daily-updated catalog. However, to date, the main problem is linked to the lack of algorithms suitable for
+extracting desertification information from the continuously coming massive amount of EO data. To meet such a purpose, In-dex-based
+approaches, as well as Machine Learning (ML) methods, can be mixed to extract the needed information and implement proper services.
+On the whole, Earth Observation for Desertification (EO4Des) is an innovative project in comparison to the state-of-the-art of desertification,
+because it will address the following objectives (OBJ), leading to corresponding results (RES):</p>	
+												<p>OBJ-1 [Scientific]: Investigation of EO big data capabilities to assess the desertification phenomenon and evolution (RES-1) </p>
+<p></p>OBJ-2 [Scientific]: Development of a novel, automatic methodology for desertification analysis, exploiting the most advanced satellite missions
+(RES-2)</p>
+<p>OBJ-3 [Technical]: Development of proper codes to implement such methodology in a free and open-source software based on cloud computing
+infrastructure (RES-3)</p>
+<p>OBJ-4 [Technical]: Development of a WebGIS platform aimed at storing and disseminating input and output data (RES-4)</p>
+<p>OBJ-5 [Governance]: Application and validation of the developed codes on three relevant thematic areas (urban - RES-5.1, agricultural areas -
+RES-5.2, coastline - RES-5.3)</p>												
 											</div>
 											<div class="col-6 col-12-small">
-												<h3>Project aim</h3>
-												<p>The desertification phenomenon is a dynamic process that is strongly affected by anthropogenic pressure and intense climatic stress triggering, in
-this way, complex soil degradation issues. For this reason, although it was analyzed deeply over the years, its evaluation is still challenging.</p>
-												<p>Therefore, EO4Des is aimed at filling such a gap by achieving the following goals:</p>
-												<p>i) to define the most relevant variables affecting the desertification process in various environmental contexts (urban, coastal and agricultural). This
-will result in WAD results downscaling;</p>
-												<p>ii) to explore the potentiality of geospatial big data, and in particular of the just-launched new satellite missions, in assessing such phenomenon;</p>
-												<p>iii) to develop automatic tools using open-source cloud computing platforms;</p>
-												<p>iv) to implement a WebGIS application devoted to project outcomes dissemination as well as support end-users decisions.</p>
-												<p>So, this project has the ambitious aim to reply to the unsolved question of "what and how to measure" as well as contextualize the answer to
-specific environmental sites in the Mediterranean area.</p>
+												<h3> Methodology and expected results</h3>
+							<h3>OBJ-1 [Scientific]: Exploration of EO big data capabilities (RES-1)</h3>
+	<p>All the available data provided by space agencies and local, national, and international portals will be gathered and processed in order to explore
+their potentiality in assessing the desertification phenomenon in different environmental contexts, such as coastal, urban, and agricultural areas.
+Desertification is strongly dependent on external conditions and, therefore, a proper dataset will be detected for each territorial context and tested
+on the corresponding Area Of Interest (AOI). This leads to the development of the best practices to be implemented in all analyzed areas and,
+mainly, in the evaluation of the benefits introduced by the adoption of the most recent satellite images (Landsat 9, PRISMA, Planet, etc.). This
+project is not just intended in improving desertification knowledge and in developing an automatic innovative methodology to assess and monitor
+such a process but also in testing the potentialities of the new satellite images.
+EO big data quality and potentialities will be checked step-by-step by applying traditional methods and introducing new indices, developed ad hoc
+to meet such purpose.</p>
+<h3>OBJ-2 [Scientific]: Desertification analysis methodology (RES-2)</h3>
+<p>The development of proper codes aimed at defining desertification risk in different environmental contexts automatically is still challenging. This is
+mainly due to the dependence of this phenomenon on Earth's surface characteristics, the huge amount of needed data to assess it, and, lastly,
+technological limitations. In recent years, new generation satellite missions equipped with innovative sensors from spectral and spatial resolution
+points of view have been introduced. Developing novel satellite data processing by using most of them, such as PlanetScope and Landsat 9
+(launched in September 2021) and PRISMA, have not been explored to estimate desertification variables yet.</p>
+	
+<p>Therefore, after investigating the most suitable variables to detect the desertification phenomenon in various environmental contexts and
+analyzing the most suitable satellite imagery characteristics to extract such information, conventional models will be implemented to test their
+performance and to point out their limitations. Both pixel-based and object-based approaches will be investigated. Indeed, several indices
+introduced to extract specific land use/land cover categories will be applied and the corresponding outcomes will be analyzed to detect their pros
+and cons. On the basis of this information, newly adapted indices will be proposed. However, this method does not give the possibility to fully
+exploit a large number of spectral bands available in multi and hyperspectral images and, for this reason, multivariate statistical approaches, which
+go beyond the univariate statistical technique limits, will be performed too. Specifically, Partial Least Squares Regression (PLSR), recognized as a
+promising option, will be tested too. The usefulness and goodness-of-fit of PLSR models will be performed by Residual Predictive Deviation
+(RPD), calculated as the ratio between the Standard Deviation (SD) of the reference dataset and the Root Mean Square Error (RMSE). There is
+not a specific statistical rule for setting the RPD thresholds and, for this reason, the commonly used classification in literature will be adopted. It
+involves three levels of classification: RPD < 3 is not useful because it means low predictive power; RPD > 3 is suitable for screening; RPD > 5 is suitable for detecting the accurate analysis (laboratory analysis). On the contrary, the quality assessment of the indices will be achieved by
+calculating the coefficient of determination (R2) and RMSE. According to classification suggested in literature, three classes will be distinguished:</p>
+												
+<p>i) strong correlation: R2 > 0.7; </p>
+<p>ii) moderate correlation: 0.5 < R2 < 0.7; </p>
+	<p>iii) weak correlation: R2 < 0.5. </p>
+	<p>Lastly, a proper rule-based model, based
+on the combination of Object-Based Image Analysis (OBIA) and Machine Learning (ML) algorithm, will be also developed and tested.
+After detecting the best technique to quantify all variables affecting the desertification phenome-non, the multi-temporal information will be
+extracted by applying the change detection technique. The outcomes of such a procedure will be assessed and refined using the available
+benchmarks dataset (acquired during the collection step).</p>
+<h3>OBJ-3 [Technical]: Free and open-source software (RES-3)</h3>
+<p>Proper Javascript codes will be developed in GEE, a cloud-free open-source computing platform for geospatial big data treatment realized by
+Google. GEE integrates a data catalog, daily updated with nearly 6000 publicly available geospatial datasets belonging to active missions. Such
+data may be consulted by users through the Application Programming Interface (API). In addition, it also gives the opportunity to upload and
+process own data. Contrary to desktop software, its usage brings out more benefits. Firstly, involving many processors in running the scripts, the
+process is speeds up significantly, and the problems linked to the storage, the processing, and the analysis of a large volume of geospatial data
+are cleaned out. This results in the possibility to extract the results in a short time and increment the number of tests to perform. Then, GEE is
+more flexible, and it allows the implementation of own codes, adapted to meet users’ needs. Nevertheless, this framework is still in progress and,
+consequently, the most of existing algorithms have not been implemented yet. Thus, using GEE allows customizing existing algorithms and
+developing new automatic ones for free. Lastly, the application of Free and Open-Source Software for Geographic information systems (FOSS4G)
+is perfectly in line with Open Geospatial Consortium (OGC) and EU directive INSPIRE	</p>
+	
+<h3>OBJ-4 [Technical]: WebGIS platform development (RES-4)</h3>
+<p>In accordance with the standards proposed by OGC and EU directive INSPIRE, FOSS4G will be also used to implement the WebGIS
+configuration, developed on the operative pipeline proposed by Huxhold and Levinsohm (1995). Such a workflow consists of six main steps, each
+of which should be considered as an interactive and iterative process. Firstly, the potential end-users and required data to meet the research
+purpose will be identified. This information, thus, will be used to design the WebGIS application configuration and structure, subsequently
+implemented in a pilot project, whose quality and performance will be further evaluated. Lastly, once the optimal quality is achieved, the real
+framework will be launched</p>
+<p>The WebGIS will be structured in three tiers: the first level (interface) will be dedicated to data presentation, while the second one will be devoted
+to the analysis module and, lastly, the third ti-er will be aimed at storing and handling the data. An adequate infrastructure, based on FOSS4G, will
+be developed for each tier. This allowed generating three independent modules.
+WebGIS application is essential since it allows disseminating projects results as well as supporting potential end-users and stakeholders in
+detecting the optimal strategies to face desertification issues.</p>
+<h3>OBJ-5 [Governance]: Applications</h3>
+	<p>The project methodology will be tested on different Areas Of Interest (AOIs) that will be selected with the panel of end-users and stakeholders, set
+in the first step of EO4Des. Specifically, different environmental contexts, such as urban, agricultural, and coastal areas, will be considered. Such
+a choice will be taken in order to define the optimal methodology for all types of landscapes since the desertification phenomenon is strongly
+influenced by the environmental contexts. Additionally, such sites will be selected both in Sicily and Puglia regions in order to test and validate the
+developed methodology in two different locations and extend their effectiveness in all Mediterranean zone.
+After defining the case studies, stakeholders and end-users will be continuously involved during the project to consider their needs as well as
+implement their suggestions and feedback. This will result in the production of useful information that will support all potential users in making the
+right decisions to face the desertification in specific sites.</p>
+	
+
+	\
 											</div>
 											<!-- Break -->
 						
