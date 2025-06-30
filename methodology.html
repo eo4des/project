@@ -1,0 +1,179 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Methodology - Editorial by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="index.html" class="logo"><strong>EO4Des</strong> Earth Observation for Desertification - PRIN</a>
+									<span class="image object" style="max-width: 300px; display: inline-block;">
+    <img src="images/europa.png" alt="" style="max-width: 100%; height: auto;" />
+</span>
+									
+									<ul class="icons">
+										
+										<li><a href="https://www.facebook.com/EO4Des/" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+						
+									</ul>
+								</header>
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+										<h1>Methodology and expected results</h1>
+									</header>
+
+									<!-- Content -->
+										
+
+							<h3>OBJ-1 [Scientific]: Exploration of EO big data capabilities (RES-1)</h3>
+	<p>All the available data provided by space agencies and local, national, and international portals will be gathered and processed in order to explore
+their potentiality in assessing the desertification phenomenon in different environmental contexts, such as coastal, urban, and agricultural areas.
+Desertification is strongly dependent on external conditions and, therefore, a proper dataset will be detected for each territorial context and tested
+on the corresponding Area Of Interest (AOI). This leads to the development of the best practices to be implemented in all analyzed areas and,
+mainly, in the evaluation of the benefits introduced by the adoption of the most recent satellite images (Landsat 9, PRISMA, Planet, etc.). This
+project is not just intended in improving desertification knowledge and in developing an automatic innovative methodology to assess and monitor
+such a process but also in testing the potentialities of the new satellite images.
+EO big data quality and potentialities will be checked step-by-step by applying traditional methods and introducing new indices, developed ad hoc
+to meet such purpose.</p>
+<h3>OBJ-2 [Scientific]: Desertification analysis methodology (RES-2)</h3>
+<p>The development of proper codes aimed at defining desertification risk in different environmental contexts automatically is still challenging. This is
+mainly due to the dependence of this phenomenon on Earth's surface characteristics, the huge amount of needed data to assess it, and, lastly,
+technological limitations. In recent years, new generation satellite missions equipped with innovative sensors from spectral and spatial resolution
+points of view have been introduced. Developing novel satellite data processing by using most of them, such as PlanetScope and Landsat 9
+(launched in September 2021) and PRISMA, have not been explored to estimate desertification variables yet.</p>
+	
+<p>Therefore, after investigating the most suitable variables to detect the desertification phenomenon in various environmental contexts and
+analyzing the most suitable satellite imagery characteristics to extract such information, conventional models will be implemented to test their
+performance and to point out their limitations. Both pixel-based and object-based approaches will be investigated. Indeed, several indices
+introduced to extract specific land use/land cover categories will be applied and the corresponding outcomes will be analyzed to detect their pros
+and cons. On the basis of this information, newly adapted indices will be proposed. However, this method does not give the possibility to fully
+exploit a large number of spectral bands available in multi and hyperspectral images and, for this reason, multivariate statistical approaches, which
+go beyond the univariate statistical technique limits, will be performed too. Specifically, Partial Least Squares Regression (PLSR), recognized as a
+promising option, will be tested too. The usefulness and goodness-of-fit of PLSR models will be performed by Residual Predictive Deviation
+(RPD), calculated as the ratio between the Standard Deviation (SD) of the reference dataset and the Root Mean Square Error (RMSE). There is
+not a specific statistical rule for setting the RPD thresholds and, for this reason, the commonly used classification in literature will be adopted. It
+involves three levels of classification: RPD < 3 is not useful because it means low predictive power; RPD > 3 is suitable for screening; RPD > 5 is suitable for detecting the accurate analysis (laboratory analysis). On the contrary, the quality assessment of the indices will be achieved by
+calculating the coefficient of determination (R2) and RMSE. According to classification suggested in literature, three classes will be distinguished:</p>
+												
+<p>i) strong correlation: R2 > 0.7; </p>
+<p>ii) moderate correlation: 0.5 < R2 < 0.7; </p>
+	<p>iii) weak correlation: R2 < 0.5. </p>
+	<p>Lastly, a proper rule-based model, based
+on the combination of Object-Based Image Analysis (OBIA) and Machine Learning (ML) algorithm, will be also developed and tested.
+After detecting the best technique to quantify all variables affecting the desertification phenome-non, the multi-temporal information will be
+extracted by applying the change detection technique. The outcomes of such a procedure will be assessed and refined using the available
+benchmarks dataset (acquired during the collection step).</p>
+<h3>OBJ-3 [Technical]: Free and open-source software (RES-3)</h3>
+<p>Proper Javascript codes will be developed in GEE, a cloud-free open-source computing platform for geospatial big data treatment realized by
+Google. GEE integrates a data catalog, daily updated with nearly 6000 publicly available geospatial datasets belonging to active missions. Such
+data may be consulted by users through the Application Programming Interface (API). In addition, it also gives the opportunity to upload and
+process own data. Contrary to desktop software, its usage brings out more benefits. Firstly, involving many processors in running the scripts, the
+process is speeds up significantly, and the problems linked to the storage, the processing, and the analysis of a large volume of geospatial data
+are cleaned out. This results in the possibility to extract the results in a short time and increment the number of tests to perform. Then, GEE is
+more flexible, and it allows the implementation of own codes, adapted to meet users’ needs. Nevertheless, this framework is still in progress and,
+consequently, the most of existing algorithms have not been implemented yet. Thus, using GEE allows customizing existing algorithms and
+developing new automatic ones for free. Lastly, the application of Free and Open-Source Software for Geographic information systems (FOSS4G)
+is perfectly in line with Open Geospatial Consortium (OGC) and EU directive INSPIRE	</p>
+	
+<h3>OBJ-4 [Technical]: WebGIS platform development (RES-4)</h3>
+<p>In accordance with the standards proposed by OGC and EU directive INSPIRE, FOSS4G will be also used to implement the WebGIS
+configuration, developed on the operative pipeline proposed by Huxhold and Levinsohm (1995). Such a workflow consists of six main steps, each
+of which should be considered as an interactive and iterative process. Firstly, the potential end-users and required data to meet the research
+purpose will be identified. This information, thus, will be used to design the WebGIS application configuration and structure, subsequently
+implemented in a pilot project, whose quality and performance will be further evaluated. Lastly, once the optimal quality is achieved, the real
+framework will be launched</p>
+<p>The WebGIS will be structured in three tiers: the first level (interface) will be dedicated to data presentation, while the second one will be devoted
+to the analysis module and, lastly, the third ti-er will be aimed at storing and handling the data. An adequate infrastructure, based on FOSS4G, will
+be developed for each tier. This allowed generating three independent modules.
+WebGIS application is essential since it allows disseminating projects results as well as supporting potential end-users and stakeholders in
+detecting the optimal strategies to face desertification issues.</p>
+<h3>OBJ-5 [Governance]: Applications</h3>
+	<p>The project methodology will be tested on different Areas Of Interest (AOIs) that will be selected with the panel of end-users and stakeholders, set
+in the first step of EO4Des. Specifically, different environmental contexts, such as urban, agricultural, and coastal areas, will be considered. Such
+a choice will be taken in order to define the optimal methodology for all types of landscapes since the desertification phenomenon is strongly
+influenced by the environmental contexts. Additionally, such sites will be selected both in Sicily and Puglia regions in order to test and validate the
+developed methodology in two different locations and extend their effectiveness in all Mediterranean zone.
+After defining the case studies, stakeholders and end-users will be continuously involved during the project to consider their needs as well as
+implement their suggestions and feedback. This will result in the production of useful information that will support all potential users in making the
+right decisions to face the desertification in specific sites.</p>
+	
+
+	\
+
+											<!-- Break -->
+						
+								</section>
+
+						</div>
+					</div>
+
+						<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Search -->
+								<section id="search" class="alt">
+									<form method="post" action="#">
+										<input type="text" name="query" id="query" placeholder="Search" />
+									</form>
+								</section>
+
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="index.html">Homepage</a></li>
+										<li><a href="general.html">General</a></li>
+										<li><a href="objectives_methodology.html">Objectives/Methodology</a></li>
+										<li><a href="partners.html">Partners</a></li>
+										<li><a href="events.html">News & Events</a></li>
+										<li><a href="resources.html">Resources</a></li>
+									</ul>
+								</nav>
+
+
+							
+
+							<!-- Footer -->
+								<footer id="footer">
+									<span class="image object" style="max-width: 300px; display: inline-block;">
+    <img src="images/europa.png" alt="" style="max-width: 100%; height: auto;" />
+</span>									
+
+									<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
