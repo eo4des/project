@@ -10,6 +10,98 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+	
+<style>
+    .eo4des-slider {
+        position: relative;
+        width: 100%;
+        min-height: 420px;
+        overflow: hidden;
+        border-radius: 0.375em;
+        box-shadow: 0 0 0 1px rgba(210, 215, 217, 0.75);
+        background: #f5f6f7;
+    }
+
+    .eo4des-slide {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        transition: opacity 1.2s ease-in-out;
+        display: flex;
+        align-items: flex-end;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .eo4des-slide.active {
+        opacity: 1;
+        z-index: 1;
+    }
+
+    .eo4des-slide::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.72), rgba(0,0,0,0.15), rgba(0,0,0,0.05));
+    }
+
+    .eo4des-slide-content {
+        position: relative;
+        z-index: 2;
+        color: #ffffff;
+        padding: 2rem;
+        max-width: 90%;
+    }
+
+    .eo4des-slide-content h3 {
+        color: #ffffff;
+        margin-bottom: 0.35rem;
+        font-size: 1.3rem;
+    }
+
+    .eo4des-slide-content p {
+        margin-bottom: 0.8rem;
+        font-size: 0.95rem;
+        line-height: 1.45;
+    }
+
+    .eo4des-slide-content a {
+        color: #ffffff !important;
+        border-bottom-color: rgba(255,255,255,0.6);
+        font-weight: 600;
+    }
+
+    .eo4des-slider-dots {
+        position: absolute;
+        right: 1rem;
+        bottom: 1rem;
+        z-index: 3;
+        display: flex;
+        gap: 0.45rem;
+    }
+
+    .eo4des-slider-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.45);
+    }
+
+    .eo4des-slider-dot.active {
+        background: #ffffff;
+    }
+
+    @media screen and (max-width: 736px) {
+        .eo4des-slider {
+            min-height: 340px;
+        }
+
+        .eo4des-slide-content {
+            padding: 1.25rem;
+        }
+    }
+</style>
+
 	</head>
 	<body class="is-preload">
 
@@ -48,9 +140,41 @@ aimed at studying the desertification process in Puglia and Sicilia contexts by 
 </p>
 			
 									</div>
-									<span class="image object">
-										<img src="images/logo.jpg" alt="" />
-									</span>
+									
+<span class="image object">
+    <div class="eo4des-slider" aria-label="EO4DES highlights">
+        <article class="eo4des-slide active" style="background-image: url('images/logo.jpg');">
+            <div class="eo4des-slide-content">
+                <h3>EO4DES Project</h3>
+                <p>Earth Observation for Desertification: monitoring vulnerable Mediterranean territories through EO data and geospatial technologies.</p>
+                <a href="general.html">Discover the project</a>
+            </div>
+        </article>
+
+        <article class="eo4des-slide" style="background-image: url('images/immagine_post.png');">
+            <div class="eo4des-slide-content">
+                <h3>Lecce Case Study</h3>
+                <p>The Salento Peninsula is used as a testbed for Earth Observation-based methodologies supporting desertification risk monitoring.</p>
+                <a href="resources.html">Read more</a>
+            </div>
+        </article>
+
+        <article class="eo4des-slide" style="background-image: url('images/sifet1.jpg');">
+            <div class="eo4des-slide-content">
+                <h3>EO4DES at SIFET 2025</h3>
+                <p>Scientific contribution presented at the SIFET 2025 congress in Brindisi on climatic quality in Sicily using the MEDALUS framework.</p>
+                <a href="events.html">View event</a>
+            </div>
+        </article>
+
+        <div class="eo4des-slider-dots" aria-hidden="true">
+            <span class="eo4des-slider-dot active"></span>
+            <span class="eo4des-slider-dot"></span>
+            <span class="eo4des-slider-dot"></span>
+        </div>
+    </div>
+</span>
+
 								</section>
 
 							
@@ -108,6 +232,29 @@ aimed at studying the desertification process in Puglia and Sicilia contexts by 
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+
+	
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const slides = document.querySelectorAll(".eo4des-slide");
+        const dots = document.querySelectorAll(".eo4des-slider-dot");
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            slides[currentSlide].classList.remove("active");
+            dots[currentSlide].classList.remove("active");
+            currentSlide = index;
+            slides[currentSlide].classList.add("active");
+            dots[currentSlide].classList.add("active");
+        }
+
+        if (slides.length > 1) {
+            setInterval(function () {
+                showSlide((currentSlide + 1) % slides.length);
+            }, 5000);
+        }
+    });
+</script>
 
 	</body>
 </html>
