@@ -300,33 +300,31 @@
     Update DEMO_EXTENT below with the exact geographic extent
     of your exported raster images (west, south, east, north, EPSG:4326).
   */
- Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlODgzNTRiOS1mMzc5LTRlZTUtODEzMi1kM2QxOTQ5ZTg3ODUiLCJpZCI6Njk2Miwic2NvcGVzIjpbImFzciIsImdjIl0sImlhdCI6MTU0NzgxNzcwMH0.iTymlDsxszEolbsAB2DK3LPO3w-OwhRUHe6zimFltKc';
 
   const DEMO_EXTENT = {
-    // Approximate Lecce-area placeholder. Replace with your exact raster bounds.
-    west: 17.85,
-    south: 40.10,
-    east: 18.55,
-    north: 40.65
+    west: 18.032132580655,
+    south: 40.307150786973,
+    east: 18.313748210356,
+    north: 40.507855658669
   };
 
-   const viewer = new Cesium.Viewer('cesiumContainer', {
-      terrainProvider : Cesium.createWorldTerrain({
-        requestWaterMask : false,
-        requestVertexNormals : false
-      }),
-      animation: false,
-      timeline: false,
-      baseLayerPicker: false,
-      geocoder: false,
-      homeButton: false,
-      sceneModePicker: false,
-      navigationHelpButton: false,
-      fullscreenButton: false,
-      vrButton: false,
-      selectionIndicator: false,
-      infoBox: true
-    });    
+  const viewer = new Cesium.Viewer("cesiumContainer", {
+    terrainProvider: Cesium.createWorldTerrain(),
+    imageryProvider: new Cesium.OpenStreetMapImageryProvider({
+      url: "https://tile.openstreetmap.org/"
+    }),
+    animation: false,
+    timeline: false,
+    baseLayerPicker: false,
+    geocoder: false,
+    homeButton: false,
+    sceneModePicker: false,
+    navigationHelpButton: false,
+    fullscreenButton: false,
+    vrButton: false,
+    selectionIndicator: false,
+    infoBox: true
+  });
 
   viewer.camera.setView({
     destination: Cesium.Rectangle.fromDegrees(
@@ -501,19 +499,19 @@
     }
   }
 
-  function addStaticRaster(fileName) {
+  function addXyzRaster(urlTemplate) {
     currentRasterLayer = layers.addImageryProvider(
-      new Cesium.SingleTileImageryProvider({
-        url: fileName,
+      new Cesium.UrlTemplateImageryProvider({
+        url: urlTemplate,
+        minimumLevel: 10,
+        maximumLevel: 15,
+        tilingScheme: new Cesium.WebMercatorTilingScheme(),
         rectangle: Cesium.Rectangle.fromDegrees(
-          DEMO_EXTENT.west,
-          DEMO_EXTENT.south,
-          DEMO_EXTENT.east,
-          DEMO_EXTENT.north
+          DEMO_EXTENT.west, DEMO_EXTENT.south,
+          DEMO_EXTENT.east, DEMO_EXTENT.north
         )
       })
     );
-
     currentRasterLayer.alpha = 0.85;
   }
 
@@ -549,8 +547,8 @@
       title: "Land Surface Temperature - Lecce 14/08/2025",
       gradient:
         "linear-gradient(90deg,#FFF7BC,#FEC44F,#FE9929,#EC7014,#CC4C02,#8C2D04)",
-      min: "25 °C",
-      max: "50 °C",
+      min: "38 °C",
+      max: "58 °C",
       description:
         "Land Surface Temperature rendered from a static PNG exported from the original raster."
     }
@@ -593,12 +591,12 @@
       }
 
       if (selectedLayer === "Thermalanomaly_Lecce_14082024") {
-        addStaticRaster("data/thermal_anomaly_lecce_14082024.png");
+        addXyzRaster("data/thermal_anomaly/{z}/{x}/{y}.png");
         return;
       }
 
       if (selectedLayer === "Land_Surface_Temperature_Lecce_14082025") {
-        addStaticRaster("data/lst_lecce_14082025.png");
+        addXyzRaster("data/lst/{z}/{x}/{y}.png");
         return;
       }
 
