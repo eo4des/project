@@ -310,7 +310,7 @@
   };
 
   const viewer = new Cesium.Viewer("cesiumContainer", {
-    terrainProvider: new Cesium.EllipsoidTerrainProvider(),
+    terrainProvider: Cesium.createWorldTerrain(),
     imageryProvider: new Cesium.OpenStreetMapImageryProvider({
       url: "https://tile.openstreetmap.org/"
     }),
