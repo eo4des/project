@@ -309,23 +309,23 @@
     north: 40.507855658669
   };
 
-  const viewer = new Cesium.Viewer("cesiumContainer", {
-    terrainProvider: Cesium.createWorldTerrain(),
-    imageryProvider: new Cesium.OpenStreetMapImageryProvider({
-      url: "https://tile.openstreetmap.org/"
-    }),
-    animation: false,
-    timeline: false,
-    baseLayerPicker: false,
-    geocoder: false,
-    homeButton: false,
-    sceneModePicker: false,
-    navigationHelpButton: false,
-    fullscreenButton: false,
-    vrButton: false,
-    selectionIndicator: false,
-    infoBox: true
-  });
+    const viewer = new Cesium.Viewer('cesiumContainer', {
+      terrainProvider : Cesium.createWorldTerrain({
+        requestWaterMask : false,
+        requestVertexNormals : false
+      }),
+      animation: false,
+      timeline: false,
+      baseLayerPicker: false,
+      geocoder: false,
+      homeButton: false,
+      sceneModePicker: false,
+      navigationHelpButton: false,
+      fullscreenButton: false,
+      vrButton: false,
+      selectionIndicator: false,
+      infoBox: true
+    });    
 
   viewer.camera.setView({
     destination: Cesium.Rectangle.fromDegrees(
