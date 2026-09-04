@@ -100,15 +100,87 @@
         background: #ffffff;
     }
 
-    @media screen and (max-width: 736px) {
-        .eo4des-slider {
-            min-height: 340px;
-        }
+@media screen and (max-width: 736px) {
 
-        .eo4des-slide-content {
-            padding: 1.25rem;
-        }
+    /* Banner verticale */
+    #banner {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 1.5rem;
     }
+
+    #banner .content,
+    #banner .image.object {
+        width: 100% !important;
+    }
+
+    /* Testo */
+    #banner .content {
+        text-align: center;
+    }
+
+    #banner .content h1 {
+        font-size: 2.2rem;
+        margin-bottom: 0.2rem;
+    }
+
+    #banner .content p {
+        font-size: 0.92rem;
+        line-height: 1.6;
+        text-align: justify;
+    }
+
+    /* Slider */
+    .eo4des-slider {
+        min-height: 300px;
+        border-radius: 0.6rem;
+    }
+
+    .eo4des-slide {
+        background-position: center center;
+        background-size: cover;
+    }
+
+    /* Box del contenuto sopra l'immagine */
+    .eo4des-slide-content {
+        width: 100%;
+        max-width: 100%;
+        padding: 1.25rem;
+        background: linear-gradient(
+            to top,
+            rgba(0,0,0,.72),
+            rgba(0,0,0,.15)
+        );
+    }
+
+    .eo4des-slide-content h3 {
+        font-size: 1.15rem;
+        margin-bottom: .35rem;
+    }
+
+    .eo4des-slide-content p {
+        font-size: .82rem;
+        line-height: 1.35;
+        margin-bottom: .6rem;
+    }
+
+    .eo4des-slide-content a {
+        display: inline-block;
+        padding: .45rem .9rem;
+        border: 1px solid rgba(255,255,255,.8);
+        border-radius: 20px;
+        text-decoration: none;
+        font-size: .78rem;
+    }
+
+    /* Indicatori */
+    .eo4des-slider-dots {
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+        bottom: .8rem;
+    }
+}
 </style>
 
 	</head>
@@ -175,7 +247,10 @@ aimed at studying the desertification process in Puglia and Sicilia contexts by 
                 <a href="events.html">View event</a>
             </div>
         </article>
-        <article class="eo4des-slide" style="background-image: url('images/webgis_preview.png'); background-size: contain; background-repeat: no-repeat; background-color: #263238;">
+        <article class="eo4des-slide" style="background-image:url('images/webgis_preview.png');
+           background-size:cover;
+           background-position:center;
+           background-color:#263238;">
             <div class="eo4des-slide-content">
                 <h3>Explore the EO4DES WebGIS</h3>
                 <p>Interactively explore selected Earth Observation products and zonal statistics developed for the EO4DES case studies.</p>
