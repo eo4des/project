@@ -2271,3 +2271,53 @@ button,
     border-top: 0;
     margin-top: 0;
     padding-top: 0; }
+
+
+@media screen and (max-width: 736px) {
+
+    #header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    /* Prima riga: titolo */
+    #header .logo {
+        flex: 0 0 100%;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 0.8rem;
+        padding-bottom: 0.7rem;
+    }
+
+    /* Seconda riga: logo europeo */
+    #header > .image.object {
+        flex: 1 1 auto;
+        width: auto !important;
+        max-width: 210px !important;
+        margin: 0 !important;
+    }
+
+    /* Seconda riga: social */
+    #header > ul {
+        flex: 0 0 auto;
+        margin: 0 0 0 auto;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+    }
+
+    #header > ul a {
+        border-bottom: 0;
+    }
+
+    #header > ul img {
+        display: block;
+        width: 28px;
+        height: 28px;
+        object-fit: contain;
+    }
+}
+
+
