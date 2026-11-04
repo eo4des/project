@@ -317,6 +317,9 @@ if (CESIUM_ION_TOKEN.trim()) {
     east: 18.313748210356,
     north: 40.507855658669
   };
+const satelliteProvider = new Cesium.ArcGisMapServerImageryProvider({
+    url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"
+});
 
 const viewer = new Cesium.Viewer("cesiumContainer", {
 
