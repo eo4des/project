@@ -307,6 +307,10 @@
     of your exported raster images (west, south, east, north, EPSG:4326).
   */
 const CESIUM_ION_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlODgzNTRiOS1mMzc5LTRlZTUtODEzMi1kM2QxOTQ5ZTg3ODUiLCJpZCI6Njk2Miwic2NvcGVzIjpbImFzciIsImdjIl0sImlhdCI6MTU0NzgxNzcwMH0.iTymlDsxszEolbsAB2DK3LPO3w-OwhRUHe6zimFltKc";
+if (CESIUM_ION_TOKEN.trim()) {
+    Cesium.Ion.defaultAccessToken = CESIUM_ION_TOKEN.trim();
+}
+  
   const DEMO_EXTENT = {
     west: 18.032132580655,
     south: 40.307150786973,
@@ -314,14 +318,13 @@ const CESIUM_ION_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlODgzN
     north: 40.507855658669
   };
 
-  const viewer = new Cesium.Viewer("cesiumContainer", {
-    terrainProvider : Cesium.createWorldTerrain({
-        requestWaterMask : false,
-        requestVertexNormals : false
-      }),
-  imageryProvider: new Cesium.ArcGisMapServerImageryProvider({
-        url: 'https://arcgisonline.com'
-    }),
+const viewer = new Cesium.Viewer("cesiumContainer", {
+
+    imageryProvider: satelliteProvider,
+
+    terrainProvider: CESIUM_ION_TOKEN.trim()
+        ? Cesium.createWorldTerrain()
+        : new Cesium.EllipsoidTerrainProvider(),
     animation: false,
     timeline: false,
     baseLayerPicker: false,
@@ -350,7 +353,21 @@ const CESIUM_ION_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlODgzN
   });
 
   const layers = viewer.scene.imageryLayers;
+// Etichette geografiche sopra la basemap satellitare
+const placeLabels = layers.addImageryProvider(
+    new Cesium.ArcGisMapServerImageryProvider({
+        url: "https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer"
+    })
+);
 
+placeLabels.alpha = 1.0;
+
+// Impostazione della scena
+viewer.scene.globe.depthTestAgainstTerrain = false;
+
+
+
+  
   let currentRasterLayer = null;
   let zonalDataSource = null;
   let regioniDataSource = null;
