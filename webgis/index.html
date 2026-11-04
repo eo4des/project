@@ -252,12 +252,12 @@
 <div id="cesiumContainer"></div>
 
 <header class="top-banner">
-  <img class="eu-logo" src="images/europa.png" alt="European Union - NextGenerationEU">
+  <img class="eu-logo" src="../images/europa.png" alt="European Union - NextGenerationEU">
   <div class="top-banner-title">
     <strong>EO4DES WebGIS Demo</strong>
     <span>Earth Observation for Desertification</span>
   </div>
-  <a href="../index.html" class="project-logo-link" title="Back to EO4DES homepage" aria-label="Back to EO4DES homepage"><img class="project-logo" src="images/logo.png" alt="EO4DES logo"></a>
+  <a href="../index.html" title="EO4DES homepage" aria-label="Back to EO4DES homepage"><img class="project-logo" src="../images/logo.png" alt="EO4DES logo"></a>
 </header>
 
 <section class="layer-panel">
@@ -265,9 +265,15 @@
   <label for="layerSelect">Select a thematic layer</label>
   <select id="layerSelect">
     <option value="none">Base map only</option>
+    <optgroup label="Sicily – August 2017">
+      <option value="Sicily_NDVI_2017_08">NDVI – Sicily, August 2017</option>
+      <option value="Sicily_Albedo_2017_08">Albedo – Sicily, August 2017</option>
+    </optgroup>
+    <optgroup label="Lecce">
     <option value="Thermalanomaly_Lecce_14082024">Thermal anomaly - Lecce 14/08/2024</option>
     <option value="StatistichezonaliDT_Lecce_14082024">Zonal statistics DT - Lecce 14/08/2024</option>
     <option value="Land_Surface_Temperature_Lecce_14082025">Land Surface Temperature - Lecce 14/08/2025</option>
+    </optgroup>
   </select>
   <p class="layer-note">
     Static GitHub Pages demo: no GeoServer/PostGIS connection is required.
@@ -300,7 +306,6 @@
     Update DEMO_EXTENT below with the exact geographic extent
     of your exported raster images (west, south, east, north, EPSG:4326).
   */
-    Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlODgzNTRiOS1mMzc5LTRlZTUtODEzMi1kM2QxOTQ5ZTg3ODUiLCJpZCI6Njk2Miwic2NvcGVzIjpbImFzciIsImdjIl0sImlhdCI6MTU0NzgxNzcwMH0.iTymlDsxszEolbsAB2DK3LPO3w-OwhRUHe6zimFltKc';
 
   const DEMO_EXTENT = {
     west: 18.032132580655,
@@ -309,23 +314,23 @@
     north: 40.507855658669
   };
 
-    const viewer = new Cesium.Viewer('cesiumContainer', {
-      terrainProvider : Cesium.createWorldTerrain({
-        requestWaterMask : false,
-        requestVertexNormals : false
-      }),
-      animation: false,
-      timeline: false,
-      baseLayerPicker: false,
-      geocoder: false,
-      homeButton: false,
-      sceneModePicker: false,
-      navigationHelpButton: false,
-      fullscreenButton: false,
-      vrButton: false,
-      selectionIndicator: false,
-      infoBox: true
-    });    
+  const viewer = new Cesium.Viewer("cesiumContainer", {
+    terrainProvider: new Cesium.EllipsoidTerrainProvider(),
+    imageryProvider: new Cesium.OpenStreetMapImageryProvider({
+      url: "https://tile.openstreetmap.org/"
+    }),
+    animation: false,
+    timeline: false,
+    baseLayerPicker: false,
+    geocoder: false,
+    homeButton: false,
+    sceneModePicker: false,
+    navigationHelpButton: false,
+    fullscreenButton: false,
+    vrButton: false,
+    selectionIndicator: false,
+    infoBox: true
+  });
 
   viewer.camera.setView({
     destination: Cesium.Rectangle.fromDegrees(
@@ -500,24 +505,32 @@
     }
   }
 
-  function addXyzRaster(urlTemplate) {
+  function addXYZRaster(urlTemplate) {
     currentRasterLayer = layers.addImageryProvider(
       new Cesium.UrlTemplateImageryProvider({
         url: urlTemplate,
-        minimumLevel: 10,
-        maximumLevel: 15,
         tilingScheme: new Cesium.WebMercatorTilingScheme(),
-        rectangle: Cesium.Rectangle.fromDegrees(
-          DEMO_EXTENT.west, DEMO_EXTENT.south,
-          DEMO_EXTENT.east, DEMO_EXTENT.north
-        )
+        minimumLevel: 9,
+        maximumLevel: 13
       })
     );
-    currentRasterLayer.alpha = 1;
-
+    currentRasterLayer.alpha = 1.0;
   }
 
   const layerMetadata = {
+    Sicily_NDVI_2017_08: {
+      title: "NDVI – Sicily, August 2017",
+      gradient: "linear-gradient(90deg,#7F3B08,#B35806,#E9C46A,#F5EBA7,#B8D77A,#65A84B,#217A3A,#075B27)",
+      min: "-1", max: "+1",
+      description: "Sentinel-2 NDVI. Values outside the physical range [-1, 1] and NoData are masked."
+    },
+    Sicily_Albedo_2017_08: {
+      title: "Surface albedo – Sicily, August 2017",
+      gradient: "linear-gradient(90deg,#253494,#2C7FB8,#7FCDBB,#E5F5F9,#FFF7BC,#FDAE61,#D7191C)",
+      min: "0", max: "0.4+",
+      description: "Sentinel-2 broadband surface albedo (unitless); display colors saturate at 0.4."
+    },
+
     none: {
       title: "",
       gradient: "",
@@ -548,11 +561,11 @@
     Land_Surface_Temperature_Lecce_14082025: {
       title: "Land Surface Temperature - Lecce 14/08/2025",
       gradient:
-        "linear-gradient(90deg,#FFE082,#FEC44F,#FE9929,#EC7014,#CC4C02,#8C2D04)",
+        "linear-gradient(90deg,#FFF7BC,#FEC44F,#FE9929,#EC7014,#CC4C02,#8C2D04)",
       min: "38 °C",
       max: "58 °C",
       description:
-        "Land Surface Temperature rendered from a static PNG exported from the original raster."
+        "Land Surface Temperature displayed as XYZ tiles."
     }
   };
 
@@ -592,13 +605,23 @@
         return;
       }
 
+      if (selectedLayer === "Sicily_NDVI_2017_08" || selectedLayer === "Sicily_Albedo_2017_08") {
+        const product = selectedLayer === "Sicily_NDVI_2017_08" ? "ndvi" : "albedo";
+        addXYZRaster("data/sicily/" + product + "/2017_08/{z}/{x}/{y}.png");
+        viewer.camera.flyTo({
+          destination: Cesium.Rectangle.fromDegrees(14.591344859, 37.238258641, 14.866149316, 37.462253642),
+          duration: 1.5
+        });
+        return;
+      }
+
       if (selectedLayer === "Thermalanomaly_Lecce_14082024") {
-        addXyzRaster("data/thermal_anomaly/{z}/{x}/{y}.png");
+        addXYZRaster("data/thermal_anomaly/{z}/{x}/{y}.png");
         return;
       }
 
       if (selectedLayer === "Land_Surface_Temperature_Lecce_14082025") {
-        addXyzRaster("data/lst/{z}/{x}/{y}.png");
+        addXYZRaster("data/lst/{z}/{x}/{y}.png");
         return;
       }
 
