@@ -306,7 +306,7 @@
     Update DEMO_EXTENT below with the exact geographic extent
     of your exported raster images (west, south, east, north, EPSG:4326).
   */
-
+const CESIUM_ION_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlODgzNTRiOS1mMzc5LTRlZTUtODEzMi1kM2QxOTQ5ZTg3ODUiLCJpZCI6Njk2Miwic2NvcGVzIjpbImFzciIsImdjIl0sImlhdCI6MTU0NzgxNzcwMH0.iTymlDsxszEolbsAB2DK3LPO3w-OwhRUHe6zimFltKc";
   const DEMO_EXTENT = {
     west: 18.032132580655,
     south: 40.307150786973,
@@ -315,9 +315,12 @@
   };
 
   const viewer = new Cesium.Viewer("cesiumContainer", {
-    terrainProvider: new Cesium.EllipsoidTerrainProvider(),
-    imageryProvider: new Cesium.OpenStreetMapImageryProvider({
-      url: "https://tile.openstreetmap.org/"
+    terrainProvider : Cesium.createWorldTerrain({
+        requestWaterMask : false,
+        requestVertexNormals : false
+      }),
+  imageryProvider: new Cesium.ArcGisMapServerImageryProvider({
+        url: 'https://arcgisonline.com'
     }),
     animation: false,
     timeline: false,
