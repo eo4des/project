@@ -273,6 +273,14 @@
       <option value="Sicily_NDVI_2017_10">NDVI – Sicily, October 2017</option>
       <option value="Sicily_Albedo_2017_10">Albedo – Sicily, October 2017</option>
     </optgroup>
+    <optgroup label="Sicily – 2018">
+      <option value="Sicily_NDVI_2018_08">NDVI – Sicily, August 2018</option>
+      <option value="Sicily_Albedo_2018_08">Albedo – Sicily, August 2018</option>
+      <option value="Sicily_NDVI_2018_09">NDVI – Sicily, September 2018</option>
+      <option value="Sicily_Albedo_2018_09">Albedo – Sicily, September 2018</option>
+      <option value="Sicily_NDVI_2018_10">NDVI – Sicily, October 2018</option>
+      <option value="Sicily_Albedo_2018_10">Albedo – Sicily, October 2018</option>
+    </optgroup>
     <optgroup label="Lecce">
     <option value="Thermalanomaly_Lecce_14082024">Thermal anomaly - Lecce 14/08/2024</option>
     <option value="StatistichezonaliDT_Lecce_14082024">Zonal statistics DT - Lecce 14/08/2024</option>
@@ -581,6 +589,43 @@
       description: "Sentinel-2 broadband surface albedo (unitless); display colors saturate at 0.4."
     },
 
+    Sicily_NDVI_2018_08: {
+      title: "NDVI – Sicily, August 2018",
+      gradient: "linear-gradient(90deg,#7F3B08,#B35806,#E9C46A,#F5EBA7,#B8D77A,#65A84B,#217A3A,#075B27)",
+      min: "-1", max: "+1",
+      description: "Sentinel-2 NDVI. Values outside the physical range [-1, 1] and NoData are masked."
+    },
+    Sicily_Albedo_2018_08: {
+      title: "Surface albedo – Sicily, August 2018",
+      gradient: "linear-gradient(90deg,#253494,#2C7FB8,#7FCDBB,#E5F5F9,#FFF7BC,#FDAE61,#D7191C)",
+      min: "0", max: "0.4+",
+      description: "Sentinel-2 broadband surface albedo (unitless); display colors saturate at 0.4."
+    },
+    Sicily_NDVI_2018_09: {
+      title: "NDVI – Sicily, September 2018",
+      gradient: "linear-gradient(90deg,#7F3B08,#B35806,#E9C46A,#F5EBA7,#B8D77A,#65A84B,#217A3A,#075B27)",
+      min: "-1", max: "+1",
+      description: "Sentinel-2 NDVI. Values outside the physical range [-1, 1] and NoData are masked."
+    },
+    Sicily_Albedo_2018_09: {
+      title: "Surface albedo – Sicily, September 2018",
+      gradient: "linear-gradient(90deg,#253494,#2C7FB8,#7FCDBB,#E5F5F9,#FFF7BC,#FDAE61,#D7191C)",
+      min: "0", max: "0.4+",
+      description: "Sentinel-2 broadband surface albedo (unitless); display colors saturate at 0.4."
+    },
+    Sicily_NDVI_2018_10: {
+      title: "NDVI – Sicily, October 2018",
+      gradient: "linear-gradient(90deg,#7F3B08,#B35806,#E9C46A,#F5EBA7,#B8D77A,#65A84B,#217A3A,#075B27)",
+      min: "-1", max: "+1",
+      description: "Sentinel-2 NDVI. Values outside the physical range [-1, 1] and NoData are masked."
+    },
+    Sicily_Albedo_2018_10: {
+      title: "Surface albedo – Sicily, October 2018",
+      gradient: "linear-gradient(90deg,#253494,#2C7FB8,#7FCDBB,#E5F5F9,#FFF7BC,#FDAE61,#D7191C)",
+      min: "0", max: "0.4+",
+      description: "Sentinel-2 broadband surface albedo (unitless); display colors saturate at 0.4."
+    },
+
     none: {
       title: "",
       gradient: "",
@@ -655,10 +700,10 @@
         return;
       }
 
-      const sicilyMatch = selectedLayer.match(/^Sicily_(NDVI|Albedo)_(2017_0[89]|2017_10)$/);
+      const sicilyMatch = selectedLayer.match(/^Sicily_(NDVI|Albedo)_(2017|2018)_(08|09|10)$/);
       if (sicilyMatch) {
         const product = sicilyMatch[1].toLowerCase();
-        const date = sicilyMatch[2];
+        const date = sicilyMatch[2] + "_" + sicilyMatch[3];
         addXYZRaster("data/sicily/" + product + "/" + date + "/{z}/{x}/{y}.png");
         // Keep geographic labels above thematic rasters.
         layers.raiseToTop(placeLabels);
