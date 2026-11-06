@@ -265,9 +265,13 @@
   <label for="layerSelect">Select a thematic layer</label>
   <select id="layerSelect">
     <option value="none">Base map only</option>
-    <optgroup label="Sicily – August 2017">
+    <optgroup label="Sicily – 2017">
       <option value="Sicily_NDVI_2017_08">NDVI – Sicily, August 2017</option>
       <option value="Sicily_Albedo_2017_08">Albedo – Sicily, August 2017</option>
+      <option value="Sicily_NDVI_2017_09">NDVI – Sicily, September 2017</option>
+      <option value="Sicily_Albedo_2017_09">Albedo – Sicily, September 2017</option>
+      <option value="Sicily_NDVI_2017_10">NDVI – Sicily, October 2017</option>
+      <option value="Sicily_Albedo_2017_10">Albedo – Sicily, October 2017</option>
     </optgroup>
     <optgroup label="Lecce">
     <option value="Thermalanomaly_Lecce_14082024">Thermal anomaly - Lecce 14/08/2024</option>
@@ -306,28 +310,30 @@
     Update DEMO_EXTENT below with the exact geographic extent
     of your exported raster images (west, south, east, north, EPSG:4326).
   */
-const CESIUM_ION_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlODgzNTRiOS1mMzc5LTRlZTUtODEzMi1kM2QxOTQ5ZTg3ODUiLCJpZCI6Njk2Miwic2NvcGVzIjpbImFzciIsImdjIl0sImlhdCI6MTU0NzgxNzcwMH0.iTymlDsxszEolbsAB2DK3LPO3w-OwhRUHe6zimFltKc';
-if (CESIUM_ION_TOKEN.trim()) {
-    Cesium.Ion.defaultAccessToken = CESIUM_ION_TOKEN.trim();
-}
-  
+
   const DEMO_EXTENT = {
     west: 18.032132580655,
     south: 40.307150786973,
     east: 18.313748210356,
     north: 40.507855658669
   };
-const satelliteProvider = new Cesium.ArcGisMapServerImageryProvider({
+
+  // Add your own Cesium ion token to enable Cesium World Terrain.
+  // Leave the string empty to keep the ellipsoid fallback.
+  const CESIUM_ION_TOKEN = "";
+  if (CESIUM_ION_TOKEN.trim()) {
+    Cesium.Ion.defaultAccessToken = CESIUM_ION_TOKEN.trim();
+  }
+
+  const satelliteProvider = new Cesium.ArcGisMapServerImageryProvider({
     url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"
-});
+  });
 
-const viewer = new Cesium.Viewer("cesiumContainer", {
-
-    imageryProvider: satelliteProvider,
-
+  const viewer = new Cesium.Viewer("cesiumContainer", {
     terrainProvider: CESIUM_ION_TOKEN.trim()
-        ? Cesium.createWorldTerrain()
-        : new Cesium.EllipsoidTerrainProvider(),
+      ? Cesium.createWorldTerrain()
+      : new Cesium.EllipsoidTerrainProvider(),
+    imageryProvider: satelliteProvider,
     animation: false,
     timeline: false,
     baseLayerPicker: false,
@@ -356,21 +362,17 @@ const viewer = new Cesium.Viewer("cesiumContainer", {
   });
 
   const layers = viewer.scene.imageryLayers;
-// Etichette geografiche sopra la basemap satellitare
-const placeLabels = layers.addImageryProvider(
+
+  // Place labels over satellite imagery. They are intentionally added before
+  // thematic layers so the EO raster remains the primary visualization.
+  const placeLabels = layers.addImageryProvider(
     new Cesium.ArcGisMapServerImageryProvider({
-        url: "https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer"
+      url: "https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer"
     })
-);
+  );
+  placeLabels.alpha = 1.0;
+  viewer.scene.globe.depthTestAgainstTerrain = false;
 
-placeLabels.alpha = 1.0;
-
-// Impostazione della scena
-viewer.scene.globe.depthTestAgainstTerrain = false;
-
-
-
-  
   let currentRasterLayer = null;
   let zonalDataSource = null;
   let regioniDataSource = null;
@@ -554,6 +556,31 @@ viewer.scene.globe.depthTestAgainstTerrain = false;
       description: "Sentinel-2 broadband surface albedo (unitless); display colors saturate at 0.4."
     },
 
+    Sicily_NDVI_2017_09: {
+      title: "NDVI – Sicily, September 2017",
+      gradient: "linear-gradient(90deg,#7F3B08,#B35806,#E9C46A,#F5EBA7,#B8D77A,#65A84B,#217A3A,#075B27)",
+      min: "-1", max: "+1",
+      description: "Sentinel-2 NDVI. Values outside the physical range [-1, 1] and NoData are masked."
+    },
+    Sicily_Albedo_2017_09: {
+      title: "Surface albedo – Sicily, September 2017",
+      gradient: "linear-gradient(90deg,#253494,#2C7FB8,#7FCDBB,#E5F5F9,#FFF7BC,#FDAE61,#D7191C)",
+      min: "0", max: "0.4+",
+      description: "Sentinel-2 broadband surface albedo (unitless); display colors saturate at 0.4."
+    },
+    Sicily_NDVI_2017_10: {
+      title: "NDVI – Sicily, October 2017",
+      gradient: "linear-gradient(90deg,#7F3B08,#B35806,#E9C46A,#F5EBA7,#B8D77A,#65A84B,#217A3A,#075B27)",
+      min: "-1", max: "+1",
+      description: "Sentinel-2 NDVI. Values outside the physical range [-1, 1] and NoData are masked."
+    },
+    Sicily_Albedo_2017_10: {
+      title: "Surface albedo – Sicily, October 2017",
+      gradient: "linear-gradient(90deg,#253494,#2C7FB8,#7FCDBB,#E5F5F9,#FFF7BC,#FDAE61,#D7191C)",
+      min: "0", max: "0.4+",
+      description: "Sentinel-2 broadband surface albedo (unitless); display colors saturate at 0.4."
+    },
+
     none: {
       title: "",
       gradient: "",
@@ -628,9 +655,13 @@ viewer.scene.globe.depthTestAgainstTerrain = false;
         return;
       }
 
-      if (selectedLayer === "Sicily_NDVI_2017_08" || selectedLayer === "Sicily_Albedo_2017_08") {
-        const product = selectedLayer === "Sicily_NDVI_2017_08" ? "ndvi" : "albedo";
-        addXYZRaster("data/sicily/" + product + "/2017_08/{z}/{x}/{y}.png");
+      const sicilyMatch = selectedLayer.match(/^Sicily_(NDVI|Albedo)_(2017_0[89]|2017_10)$/);
+      if (sicilyMatch) {
+        const product = sicilyMatch[1].toLowerCase();
+        const date = sicilyMatch[2];
+        addXYZRaster("data/sicily/" + product + "/" + date + "/{z}/{x}/{y}.png");
+        // Keep geographic labels above thematic rasters.
+        layers.raiseToTop(placeLabels);
         viewer.camera.flyTo({
           destination: Cesium.Rectangle.fromDegrees(14.591344859, 37.238258641, 14.866149316, 37.462253642),
           duration: 1.5
