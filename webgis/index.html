@@ -113,6 +113,17 @@
       outline: none;
     }
 
+
+    .area-buttons,.step-buttons {display:flex;gap:6px;margin:0 0 12px}
+    .area-buttons button,.step-buttons button {flex:1;cursor:pointer;border:1px solid rgba(255,255,255,.4);border-radius:8px;padding:9px 5px;background:rgba(255,255,255,.15);color:white;font-size:.79rem}
+    .area-buttons button:hover,.step-buttons button:hover {background:rgba(255,255,255,.28)}
+    .temporal-controls {margin-top:12px}
+    .temporal-controls[hidden] {display:none}
+    .date-controls {display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px}
+    .step-buttons {margin-top:12px}
+    .layer-panel .toggle-layer {margin-top:12px;display:flex;align-items:center;gap:8px}
+    .toggle-layer input {accent-color:#8bc34a}
+
     .layer-note,
     .status-note {
       margin: 12px 0 0 0;
@@ -262,79 +273,37 @@
 
 <section class="layer-panel">
   <h3>WebGIS Layers</h3>
-  <label for="layerSelect">Select a thematic layer</label>
-  <select id="layerSelect">
-    <option value="none">Base map only</option>
-    <optgroup label="Sicily – 2017">
-      <option value="Sicily_NDVI_2017_08">NDVI – Sicily, August 2017</option>
-      <option value="Sicily_Albedo_2017_08">Albedo – Sicily, August 2017</option>
-      <option value="Sicily_NDVI_2017_09">NDVI – Sicily, September 2017</option>
-      <option value="Sicily_Albedo_2017_09">Albedo – Sicily, September 2017</option>
-      <option value="Sicily_NDVI_2017_10">NDVI – Sicily, October 2017</option>
-      <option value="Sicily_Albedo_2017_10">Albedo – Sicily, October 2017</option>
-    </optgroup>
-    <optgroup label="Sicily – 2018">
-      <option value="Sicily_NDVI_2018_08">NDVI – Sicily, August 2018</option>
-      <option value="Sicily_Albedo_2018_08">Albedo – Sicily, August 2018</option>
-      <option value="Sicily_NDVI_2018_09">NDVI – Sicily, September 2018</option>
-      <option value="Sicily_Albedo_2018_09">Albedo – Sicily, September 2018</option>
-      <option value="Sicily_NDVI_2018_10">NDVI – Sicily, October 2018</option>
-      <option value="Sicily_Albedo_2018_10">Albedo – Sicily, October 2018</option>
-    </optgroup>
-    <optgroup label="Sicily – 2019">
-      <option value="Sicily_NDVI_2019_08">NDVI – Sicily, August 2019</option>
-      <option value="Sicily_Albedo_2019_08">Albedo – Sicily, August 2019</option>
-      <option value="Sicily_NDVI_2019_09">NDVI – Sicily, September 2019</option>
-      <option value="Sicily_Albedo_2019_09">Albedo – Sicily, September 2019</option>
-      <option value="Sicily_NDVI_2019_10">NDVI – Sicily, October 2019</option>
-      <option value="Sicily_Albedo_2019_10">Albedo – Sicily, October 2019</option>
-    </optgroup>
-    <optgroup label="Sicily – 2020">
-      <option value="Sicily_NDVI_2020_08">NDVI – Sicily, August 2020</option>
-      <option value="Sicily_Albedo_2020_08">Albedo – Sicily, August 2020</option>
-      <option value="Sicily_NDVI_2020_09">NDVI – Sicily, September 2020</option>
-      <option value="Sicily_Albedo_2020_09">Albedo – Sicily, September 2020</option>
-      <option value="Sicily_NDVI_2020_10">NDVI – Sicily, October 2020</option>
-      <option value="Sicily_Albedo_2020_10">Albedo – Sicily, October 2020</option>
-    </optgroup>
-    <optgroup label="Sicily – 2021">
-      <option value="Sicily_NDVI_2021_08">NDVI – Sicily, August 2021</option>
-      <option value="Sicily_Albedo_2021_08">Albedo – Sicily, August 2021</option>
-      <option value="Sicily_NDVI_2021_09">NDVI – Sicily, September 2021</option>
-      <option value="Sicily_Albedo_2021_09">Albedo – Sicily, September 2021</option>
-      <option value="Sicily_NDVI_2021_10">NDVI – Sicily, October 2021</option>
-      <option value="Sicily_Albedo_2021_10">Albedo – Sicily, October 2021</option>
-    </optgroup>
-    <optgroup label="Sicily – 2022">
-      <option value="Sicily_NDVI_2022_08">NDVI – Sicily, August 2022</option>
-      <option value="Sicily_Albedo_2022_08">Albedo – Sicily, August 2022</option>
-      <option value="Sicily_NDVI_2022_09">NDVI – Sicily, September 2022</option>
-      <option value="Sicily_Albedo_2022_09">Albedo – Sicily, September 2022</option>
-      <option value="Sicily_NDVI_2022_10">NDVI – Sicily, October 2022</option>
-      <option value="Sicily_Albedo_2022_10">Albedo – Sicily, October 2022</option>
-    </optgroup>
-    <optgroup label="Sicily – 2023">
-      <option value="Sicily_NDVI_2023_08">NDVI – Sicily, August 2023</option>
-      <option value="Sicily_Albedo_2023_08">Albedo – Sicily, August 2023</option>
-      <option value="Sicily_NDVI_2023_09">NDVI – Sicily, September 2023</option>
-      <option value="Sicily_Albedo_2023_09">Albedo – Sicily, September 2023</option>
-      <option value="Sicily_NDVI_2023_10">NDVI – Sicily, October 2023</option>
-      <option value="Sicily_Albedo_2023_10">Albedo – Sicily, October 2023</option>
-    </optgroup>
-    <optgroup label="Sicily – 2024">
-      <option value="Sicily_NDVI_2024_08">NDVI – Sicily, August 2024</option>
-      <option value="Sicily_Albedo_2024_08">Albedo – Sicily, August 2024</option>
-      <option value="Sicily_NDVI_2024_09">NDVI – Sicily, September 2024</option>
-      <option value="Sicily_Albedo_2024_09">Albedo – Sicily, September 2024</option>
-      <option value="Sicily_NDVI_2024_10">NDVI – Sicily, October 2024</option>
-      <option value="Sicily_Albedo_2024_10">Albedo – Sicily, October 2024</option>
-    </optgroup>
-    <optgroup label="Lecce">
-    <option value="Thermalanomaly_Lecce_14082024">Thermal anomaly - Lecce 14/08/2024</option>
-    <option value="StatistichezonaliDT_Lecce_14082024">Zonal statistics DT - Lecce 14/08/2024</option>
-    <option value="Land_Surface_Temperature_Lecce_14082025">Land Surface Temperature - Lecce 14/08/2025</option>
-    </optgroup>
+  <label>Study areas</label>
+  <div class="area-buttons">
+    <button type="button" id="goOverview">Overview</button>
+    <button type="button" id="goSicily">Catania - Sicily</button>
+    <button type="button" id="goLecce">Lecce - Puglia</button>
+  </div>
+  <label for="areaSelect">Study area</label>
+  <select id="areaSelect">
+    <option value="sicily">Catania - Sicily</option>
+    <option value="lecce">Lecce - Puglia</option>
   </select>
+  <div id="sicilyControls" class="temporal-controls">
+    <label for="productSelect">Satellite index</label>
+    <select id="productSelect"><option value="NDVI">NDVI</option><option value="Albedo">Albedo</option></select>
+    <div class="date-controls">
+      <div><label for="yearSelect">Year</label><select id="yearSelect"></select></div>
+      <div><label for="monthSelect">Month</label><select id="monthSelect">
+        <option value="08">August</option><option value="09">September</option><option value="10">October</option>
+      </select></div>
+    </div>
+    <div class="step-buttons"><button type="button" id="prevDate">&#8592; Previous</button><button type="button" id="nextDate">Next &#8594;</button></div>
+  </div>
+  <div id="lecceControls" class="temporal-controls" hidden>
+    <label for="lecceSelect">Thematic layer</label>
+    <select id="lecceSelect">
+      <option value="Thermalanomaly_Lecce_14082024">Thermal anomaly — 14/08/2024</option>
+      <option value="StatistichezonaliDT_Lecce_14082024">Zonal statistics DT — 14/08/2024</option>
+      <option value="Land_Surface_Temperature_Lecce_14082025">Land Surface Temperature — 14/08/2025</option>
+    </select>
+  </div>
+  <label class="toggle-layer"><input type="checkbox" id="showLayer" checked> Show thematic layer</label>
   <p class="layer-note">
     Static GitHub Pages demo: no GeoServer/PostGIS connection is required.
   </p>
@@ -403,13 +372,11 @@
     infoBox: true
   });
 
+  const SICILY_EXTENT = {west:14.591344859,south:37.238258641,east:14.866149316,north:37.462253642};
+  const OVERVIEW_EXTENT = {west:14.25,south:36.85,east:18.65,north:40.85};
+  function rectangleOf(bounds) {return Cesium.Rectangle.fromDegrees(bounds.west,bounds.south,bounds.east,bounds.north);}
   viewer.camera.setView({
-    destination: Cesium.Rectangle.fromDegrees(
-      DEMO_EXTENT.west,
-      DEMO_EXTENT.south,
-      DEMO_EXTENT.east,
-      DEMO_EXTENT.north
-    ),
+    destination: rectangleOf(OVERVIEW_EXTENT),
     orientation: {
       heading: Cesium.Math.toRadians(0.0),
       pitch: Cesium.Math.toRadians(-70.0),
@@ -600,293 +567,293 @@
 
   const layerMetadata = {
     Sicily_NDVI_2017_08: {
-      title: "NDVI – Sicily, August 2017",
+      title: "NDVI – Catania - Sicily, August 2017",
       gradient: "linear-gradient(90deg,#7F3B08,#B35806,#E9C46A,#F5EBA7,#B8D77A,#65A84B,#217A3A,#075B27)",
       min: "-1", max: "+1",
       description: "Sentinel-2 NDVI. Values outside the physical range [-1, 1] and NoData are masked."
     },
     Sicily_Albedo_2017_08: {
-      title: "Surface albedo – Sicily, August 2017",
+      title: "Surface albedo – Catania - Sicily, August 2017",
       gradient: "linear-gradient(90deg,#253494,#2C7FB8,#7FCDBB,#E5F5F9,#FFF7BC,#FDAE61,#D7191C)",
       min: "0", max: "0.4+",
       description: "Sentinel-2 broadband surface albedo (unitless); display colors saturate at 0.4."
     },
 
     Sicily_NDVI_2017_09: {
-      title: "NDVI – Sicily, September 2017",
+      title: "NDVI – Catania - Sicily, September 2017",
       gradient: "linear-gradient(90deg,#7F3B08,#B35806,#E9C46A,#F5EBA7,#B8D77A,#65A84B,#217A3A,#075B27)",
       min: "-1", max: "+1",
       description: "Sentinel-2 NDVI. Values outside the physical range [-1, 1] and NoData are masked."
     },
     Sicily_Albedo_2017_09: {
-      title: "Surface albedo – Sicily, September 2017",
+      title: "Surface albedo – Catania - Sicily, September 2017",
       gradient: "linear-gradient(90deg,#253494,#2C7FB8,#7FCDBB,#E5F5F9,#FFF7BC,#FDAE61,#D7191C)",
       min: "0", max: "0.4+",
       description: "Sentinel-2 broadband surface albedo (unitless); display colors saturate at 0.4."
     },
     Sicily_NDVI_2017_10: {
-      title: "NDVI – Sicily, October 2017",
+      title: "NDVI – Catania - Sicily, October 2017",
       gradient: "linear-gradient(90deg,#7F3B08,#B35806,#E9C46A,#F5EBA7,#B8D77A,#65A84B,#217A3A,#075B27)",
       min: "-1", max: "+1",
       description: "Sentinel-2 NDVI. Values outside the physical range [-1, 1] and NoData are masked."
     },
     Sicily_Albedo_2017_10: {
-      title: "Surface albedo – Sicily, October 2017",
+      title: "Surface albedo – Catania - Sicily, October 2017",
       gradient: "linear-gradient(90deg,#253494,#2C7FB8,#7FCDBB,#E5F5F9,#FFF7BC,#FDAE61,#D7191C)",
       min: "0", max: "0.4+",
       description: "Sentinel-2 broadband surface albedo (unitless); display colors saturate at 0.4."
     },
 
     Sicily_NDVI_2018_08: {
-      title: "NDVI – Sicily, August 2018",
+      title: "NDVI – Catania - Sicily, August 2018",
       gradient: "linear-gradient(90deg,#7F3B08,#B35806,#E9C46A,#F5EBA7,#B8D77A,#65A84B,#217A3A,#075B27)",
       min: "-1", max: "+1",
       description: "Sentinel-2 NDVI. Values outside the physical range [-1, 1] and NoData are masked."
     },
     Sicily_Albedo_2018_08: {
-      title: "Surface albedo – Sicily, August 2018",
+      title: "Surface albedo – Catania - Sicily, August 2018",
       gradient: "linear-gradient(90deg,#253494,#2C7FB8,#7FCDBB,#E5F5F9,#FFF7BC,#FDAE61,#D7191C)",
       min: "0", max: "0.4+",
       description: "Sentinel-2 broadband surface albedo (unitless); display colors saturate at 0.4."
     },
     Sicily_NDVI_2018_09: {
-      title: "NDVI – Sicily, September 2018",
+      title: "NDVI – Catania - Sicily, September 2018",
       gradient: "linear-gradient(90deg,#7F3B08,#B35806,#E9C46A,#F5EBA7,#B8D77A,#65A84B,#217A3A,#075B27)",
       min: "-1", max: "+1",
       description: "Sentinel-2 NDVI. Values outside the physical range [-1, 1] and NoData are masked."
     },
     Sicily_Albedo_2018_09: {
-      title: "Surface albedo – Sicily, September 2018",
+      title: "Surface albedo – Catania - Sicily, September 2018",
       gradient: "linear-gradient(90deg,#253494,#2C7FB8,#7FCDBB,#E5F5F9,#FFF7BC,#FDAE61,#D7191C)",
       min: "0", max: "0.4+",
       description: "Sentinel-2 broadband surface albedo (unitless); display colors saturate at 0.4."
     },
     Sicily_NDVI_2018_10: {
-      title: "NDVI – Sicily, October 2018",
+      title: "NDVI – Catania - Sicily, October 2018",
       gradient: "linear-gradient(90deg,#7F3B08,#B35806,#E9C46A,#F5EBA7,#B8D77A,#65A84B,#217A3A,#075B27)",
       min: "-1", max: "+1",
       description: "Sentinel-2 NDVI. Values outside the physical range [-1, 1] and NoData are masked."
     },
     Sicily_Albedo_2018_10: {
-      title: "Surface albedo – Sicily, October 2018",
+      title: "Surface albedo – Catania - Sicily, October 2018",
       gradient: "linear-gradient(90deg,#253494,#2C7FB8,#7FCDBB,#E5F5F9,#FFF7BC,#FDAE61,#D7191C)",
       min: "0", max: "0.4+",
       description: "Sentinel-2 broadband surface albedo (unitless); display colors saturate at 0.4."
     },
 
     Sicily_NDVI_2019_08: {
-      title: "NDVI – Sicily, August 2019",
+      title: "NDVI – Catania - Sicily, August 2019",
       gradient: "linear-gradient(90deg,#7F3B08,#B35806,#E9C46A,#F5EBA7,#B8D77A,#65A84B,#217A3A,#075B27)",
       min: "-1", max: "+1",
       description: "Sentinel-2 NDVI. Values outside the physical range [-1, 1] and NoData are masked."
     },
     Sicily_Albedo_2019_08: {
-      title: "Surface albedo – Sicily, August 2019",
+      title: "Surface albedo – Catania - Sicily, August 2019",
       gradient: "linear-gradient(90deg,#253494,#2C7FB8,#7FCDBB,#E5F5F9,#FFF7BC,#FDAE61,#D7191C)",
       min: "0", max: "0.4+",
       description: "Sentinel-2 broadband surface albedo (unitless); display colors saturate at 0.4."
     },
     Sicily_NDVI_2019_09: {
-      title: "NDVI – Sicily, September 2019",
+      title: "NDVI – Catania - Sicily, September 2019",
       gradient: "linear-gradient(90deg,#7F3B08,#B35806,#E9C46A,#F5EBA7,#B8D77A,#65A84B,#217A3A,#075B27)",
       min: "-1", max: "+1",
       description: "Sentinel-2 NDVI. Values outside the physical range [-1, 1] and NoData are masked."
     },
     Sicily_Albedo_2019_09: {
-      title: "Surface albedo – Sicily, September 2019",
+      title: "Surface albedo – Catania - Sicily, September 2019",
       gradient: "linear-gradient(90deg,#253494,#2C7FB8,#7FCDBB,#E5F5F9,#FFF7BC,#FDAE61,#D7191C)",
       min: "0", max: "0.4+",
       description: "Sentinel-2 broadband surface albedo (unitless); display colors saturate at 0.4."
     },
     Sicily_NDVI_2019_10: {
-      title: "NDVI – Sicily, October 2019",
+      title: "NDVI – Catania - Sicily, October 2019",
       gradient: "linear-gradient(90deg,#7F3B08,#B35806,#E9C46A,#F5EBA7,#B8D77A,#65A84B,#217A3A,#075B27)",
       min: "-1", max: "+1",
       description: "Sentinel-2 NDVI. Values outside the physical range [-1, 1] and NoData are masked."
     },
     Sicily_Albedo_2019_10: {
-      title: "Surface albedo – Sicily, October 2019",
+      title: "Surface albedo – Catania - Sicily, October 2019",
       gradient: "linear-gradient(90deg,#253494,#2C7FB8,#7FCDBB,#E5F5F9,#FFF7BC,#FDAE61,#D7191C)",
       min: "0", max: "0.4+",
       description: "Sentinel-2 broadband surface albedo (unitless); display colors saturate at 0.4."
     },
 
     Sicily_NDVI_2020_08: {
-      title: "NDVI – Sicily, August 2020",
+      title: "NDVI – Catania - Sicily, August 2020",
       gradient: "linear-gradient(90deg,#7F3B08,#B35806,#E9C46A,#F5EBA7,#B8D77A,#65A84B,#217A3A,#075B27)",
       min: "-1", max: "+1",
       description: "Sentinel-2 NDVI. Values outside the physical range [-1, 1] and NoData are masked."
     },
     Sicily_Albedo_2020_08: {
-      title: "Surface albedo – Sicily, August 2020",
+      title: "Surface albedo – Catania - Sicily, August 2020",
       gradient: "linear-gradient(90deg,#253494,#2C7FB8,#7FCDBB,#E5F5F9,#FFF7BC,#FDAE61,#D7191C)",
       min: "0", max: "0.4+",
       description: "Sentinel-2 broadband surface albedo (unitless); display colors saturate at 0.4."
     },
     Sicily_NDVI_2020_09: {
-      title: "NDVI – Sicily, September 2020",
+      title: "NDVI – Catania - Sicily, September 2020",
       gradient: "linear-gradient(90deg,#7F3B08,#B35806,#E9C46A,#F5EBA7,#B8D77A,#65A84B,#217A3A,#075B27)",
       min: "-1", max: "+1",
       description: "Sentinel-2 NDVI. Values outside the physical range [-1, 1] and NoData are masked."
     },
     Sicily_Albedo_2020_09: {
-      title: "Surface albedo – Sicily, September 2020",
+      title: "Surface albedo – Catania - Sicily, September 2020",
       gradient: "linear-gradient(90deg,#253494,#2C7FB8,#7FCDBB,#E5F5F9,#FFF7BC,#FDAE61,#D7191C)",
       min: "0", max: "0.4+",
       description: "Sentinel-2 broadband surface albedo (unitless); display colors saturate at 0.4."
     },
     Sicily_NDVI_2020_10: {
-      title: "NDVI – Sicily, October 2020",
+      title: "NDVI – Catania - Sicily, October 2020",
       gradient: "linear-gradient(90deg,#7F3B08,#B35806,#E9C46A,#F5EBA7,#B8D77A,#65A84B,#217A3A,#075B27)",
       min: "-1", max: "+1",
       description: "Sentinel-2 NDVI. Values outside the physical range [-1, 1] and NoData are masked."
     },
     Sicily_Albedo_2020_10: {
-      title: "Surface albedo – Sicily, October 2020",
+      title: "Surface albedo – Catania - Sicily, October 2020",
       gradient: "linear-gradient(90deg,#253494,#2C7FB8,#7FCDBB,#E5F5F9,#FFF7BC,#FDAE61,#D7191C)",
       min: "0", max: "0.4+",
       description: "Sentinel-2 broadband surface albedo (unitless); display colors saturate at 0.4."
     },
     Sicily_NDVI_2021_08: {
-      title: "NDVI – Sicily, August 2021",
+      title: "NDVI – Catania - Sicily, August 2021",
       gradient: "linear-gradient(90deg,#7F3B08,#B35806,#E9C46A,#F5EBA7,#B8D77A,#65A84B,#217A3A,#075B27)",
       min: "-1", max: "+1",
       description: "Sentinel-2 NDVI. Values outside the physical range [-1, 1] and NoData are masked."
     },
     Sicily_Albedo_2021_08: {
-      title: "Surface albedo – Sicily, August 2021",
+      title: "Surface albedo – Catania - Sicily, August 2021",
       gradient: "linear-gradient(90deg,#253494,#2C7FB8,#7FCDBB,#E5F5F9,#FFF7BC,#FDAE61,#D7191C)",
       min: "0", max: "0.4+",
       description: "Sentinel-2 broadband surface albedo (unitless); display colors saturate at 0.4."
     },
     Sicily_NDVI_2021_09: {
-      title: "NDVI – Sicily, September 2021",
+      title: "NDVI – Catania - Sicily, September 2021",
       gradient: "linear-gradient(90deg,#7F3B08,#B35806,#E9C46A,#F5EBA7,#B8D77A,#65A84B,#217A3A,#075B27)",
       min: "-1", max: "+1",
       description: "Sentinel-2 NDVI. Values outside the physical range [-1, 1] and NoData are masked."
     },
     Sicily_Albedo_2021_09: {
-      title: "Surface albedo – Sicily, September 2021",
+      title: "Surface albedo – Catania - Sicily, September 2021",
       gradient: "linear-gradient(90deg,#253494,#2C7FB8,#7FCDBB,#E5F5F9,#FFF7BC,#FDAE61,#D7191C)",
       min: "0", max: "0.4+",
       description: "Sentinel-2 broadband surface albedo (unitless); display colors saturate at 0.4."
     },
     Sicily_NDVI_2021_10: {
-      title: "NDVI – Sicily, October 2021",
+      title: "NDVI – Catania - Sicily, October 2021",
       gradient: "linear-gradient(90deg,#7F3B08,#B35806,#E9C46A,#F5EBA7,#B8D77A,#65A84B,#217A3A,#075B27)",
       min: "-1", max: "+1",
       description: "Sentinel-2 NDVI. Values outside the physical range [-1, 1] and NoData are masked."
     },
     Sicily_Albedo_2021_10: {
-      title: "Surface albedo – Sicily, October 2021",
+      title: "Surface albedo – Catania - Sicily, October 2021",
       gradient: "linear-gradient(90deg,#253494,#2C7FB8,#7FCDBB,#E5F5F9,#FFF7BC,#FDAE61,#D7191C)",
       min: "0", max: "0.4+",
       description: "Sentinel-2 broadband surface albedo (unitless); display colors saturate at 0.4."
     },
     Sicily_NDVI_2022_08: {
-      title: "NDVI – Sicily, August 2022",
+      title: "NDVI – Catania - Sicily, August 2022",
       gradient: "linear-gradient(90deg,#7F3B08,#B35806,#E9C46A,#F5EBA7,#B8D77A,#65A84B,#217A3A,#075B27)",
       min: "-1", max: "+1",
       description: "Sentinel-2 NDVI. Values outside the physical range [-1, 1] and NoData are masked."
     },
     Sicily_Albedo_2022_08: {
-      title: "Surface albedo – Sicily, August 2022",
+      title: "Surface albedo – Catania - Sicily, August 2022",
       gradient: "linear-gradient(90deg,#253494,#2C7FB8,#7FCDBB,#E5F5F9,#FFF7BC,#FDAE61,#D7191C)",
       min: "0", max: "0.4+",
       description: "Sentinel-2 broadband surface albedo (unitless); display colors saturate at 0.4."
     },
     Sicily_NDVI_2022_09: {
-      title: "NDVI – Sicily, September 2022",
+      title: "NDVI – Catania - Sicily, September 2022",
       gradient: "linear-gradient(90deg,#7F3B08,#B35806,#E9C46A,#F5EBA7,#B8D77A,#65A84B,#217A3A,#075B27)",
       min: "-1", max: "+1",
       description: "Sentinel-2 NDVI. Values outside the physical range [-1, 1] and NoData are masked."
     },
     Sicily_Albedo_2022_09: {
-      title: "Surface albedo – Sicily, September 2022",
+      title: "Surface albedo – Catania - Sicily, September 2022",
       gradient: "linear-gradient(90deg,#253494,#2C7FB8,#7FCDBB,#E5F5F9,#FFF7BC,#FDAE61,#D7191C)",
       min: "0", max: "0.4+",
       description: "Sentinel-2 broadband surface albedo (unitless); display colors saturate at 0.4."
     },
     Sicily_NDVI_2022_10: {
-      title: "NDVI – Sicily, October 2022",
+      title: "NDVI – Catania - Sicily, October 2022",
       gradient: "linear-gradient(90deg,#7F3B08,#B35806,#E9C46A,#F5EBA7,#B8D77A,#65A84B,#217A3A,#075B27)",
       min: "-1", max: "+1",
       description: "Sentinel-2 NDVI. Values outside the physical range [-1, 1] and NoData are masked."
     },
     Sicily_Albedo_2022_10: {
-      title: "Surface albedo – Sicily, October 2022",
+      title: "Surface albedo – Catania - Sicily, October 2022",
       gradient: "linear-gradient(90deg,#253494,#2C7FB8,#7FCDBB,#E5F5F9,#FFF7BC,#FDAE61,#D7191C)",
       min: "0", max: "0.4+",
       description: "Sentinel-2 broadband surface albedo (unitless); display colors saturate at 0.4."
     },
     Sicily_NDVI_2023_08: {
-      title: "NDVI – Sicily, August 2023",
+      title: "NDVI – Catania - Sicily, August 2023",
       gradient: "linear-gradient(90deg,#7F3B08,#B35806,#E9C46A,#F5EBA7,#B8D77A,#65A84B,#217A3A,#075B27)",
       min: "-1", max: "+1",
       description: "Sentinel-2 NDVI. Values outside the physical range [-1, 1] and NoData are masked."
     },
     Sicily_Albedo_2023_08: {
-      title: "Surface albedo – Sicily, August 2023",
+      title: "Surface albedo – Catania - Sicily, August 2023",
       gradient: "linear-gradient(90deg,#253494,#2C7FB8,#7FCDBB,#E5F5F9,#FFF7BC,#FDAE61,#D7191C)",
       min: "0", max: "0.4+",
       description: "Sentinel-2 broadband surface albedo (unitless); display colors saturate at 0.4."
     },
     Sicily_NDVI_2023_09: {
-      title: "NDVI – Sicily, September 2023",
+      title: "NDVI – Catania - Sicily, September 2023",
       gradient: "linear-gradient(90deg,#7F3B08,#B35806,#E9C46A,#F5EBA7,#B8D77A,#65A84B,#217A3A,#075B27)",
       min: "-1", max: "+1",
       description: "Sentinel-2 NDVI. Values outside the physical range [-1, 1] and NoData are masked."
     },
     Sicily_Albedo_2023_09: {
-      title: "Surface albedo – Sicily, September 2023",
+      title: "Surface albedo – Catania - Sicily, September 2023",
       gradient: "linear-gradient(90deg,#253494,#2C7FB8,#7FCDBB,#E5F5F9,#FFF7BC,#FDAE61,#D7191C)",
       min: "0", max: "0.4+",
       description: "Sentinel-2 broadband surface albedo (unitless); display colors saturate at 0.4."
     },
     Sicily_NDVI_2023_10: {
-      title: "NDVI – Sicily, October 2023",
+      title: "NDVI – Catania - Sicily, October 2023",
       gradient: "linear-gradient(90deg,#7F3B08,#B35806,#E9C46A,#F5EBA7,#B8D77A,#65A84B,#217A3A,#075B27)",
       min: "-1", max: "+1",
       description: "Sentinel-2 NDVI. Values outside the physical range [-1, 1] and NoData are masked."
     },
     Sicily_Albedo_2023_10: {
-      title: "Surface albedo – Sicily, October 2023",
+      title: "Surface albedo – Catania - Sicily, October 2023",
       gradient: "linear-gradient(90deg,#253494,#2C7FB8,#7FCDBB,#E5F5F9,#FFF7BC,#FDAE61,#D7191C)",
       min: "0", max: "0.4+",
       description: "Sentinel-2 broadband surface albedo (unitless); display colors saturate at 0.4."
     },
     Sicily_NDVI_2024_08: {
-      title: "NDVI – Sicily, August 2024",
+      title: "NDVI – Catania - Sicily, August 2024",
       gradient: "linear-gradient(90deg,#7F3B08,#B35806,#E9C46A,#F5EBA7,#B8D77A,#65A84B,#217A3A,#075B27)",
       min: "-1", max: "+1",
       description: "Sentinel-2 NDVI. Values outside the physical range [-1, 1] and NoData are masked."
     },
     Sicily_Albedo_2024_08: {
-      title: "Surface albedo – Sicily, August 2024",
+      title: "Surface albedo – Catania - Sicily, August 2024",
       gradient: "linear-gradient(90deg,#253494,#2C7FB8,#7FCDBB,#E5F5F9,#FFF7BC,#FDAE61,#D7191C)",
       min: "0", max: "0.4+",
       description: "Sentinel-2 broadband surface albedo (unitless); display colors saturate at 0.4."
     },
     Sicily_NDVI_2024_09: {
-      title: "NDVI – Sicily, September 2024",
+      title: "NDVI – Catania - Sicily, September 2024",
       gradient: "linear-gradient(90deg,#7F3B08,#B35806,#E9C46A,#F5EBA7,#B8D77A,#65A84B,#217A3A,#075B27)",
       min: "-1", max: "+1",
       description: "Sentinel-2 NDVI. Values outside the physical range [-1, 1] and NoData are masked."
     },
     Sicily_Albedo_2024_09: {
-      title: "Surface albedo – Sicily, September 2024",
+      title: "Surface albedo – Catania - Sicily, September 2024",
       gradient: "linear-gradient(90deg,#253494,#2C7FB8,#7FCDBB,#E5F5F9,#FFF7BC,#FDAE61,#D7191C)",
       min: "0", max: "0.4+",
       description: "Sentinel-2 broadband surface albedo (unitless); display colors saturate at 0.4."
     },
     Sicily_NDVI_2024_10: {
-      title: "NDVI – Sicily, October 2024",
+      title: "NDVI – Catania - Sicily, October 2024",
       gradient: "linear-gradient(90deg,#7F3B08,#B35806,#E9C46A,#F5EBA7,#B8D77A,#65A84B,#217A3A,#075B27)",
       min: "-1", max: "+1",
       description: "Sentinel-2 NDVI. Values outside the physical range [-1, 1] and NoData are masked."
     },
     Sicily_Albedo_2024_10: {
-      title: "Surface albedo – Sicily, October 2024",
+      title: "Surface albedo – Catania - Sicily, October 2024",
       gradient: "linear-gradient(90deg,#253494,#2C7FB8,#7FCDBB,#E5F5F9,#FFF7BC,#FDAE61,#D7191C)",
       min: "0", max: "0.4+",
       description: "Sentinel-2 broadband surface albedo (unitless); display colors saturate at 0.4."
@@ -952,48 +919,82 @@
     legendPanel.style.display = "block";
   }
 
-  document.getElementById("layerSelect").addEventListener(
-    "change",
-    async function(event) {
-      const selectedLayer = event.target.value;
+  // AOI markers remain visible on the satellite basemap; click to navigate.
+  function addStudyMarker(name, longitude, latitude, target) {
+    const entity = viewer.entities.add({
+      name: name,
+      position: Cesium.Cartesian3.fromDegrees(longitude, latitude),
+      point: {pixelSize: 11,color: Cesium.Color.LIME,outlineColor: Cesium.Color.BLACK,outlineWidth: 2,
+        disableDepthTestDistance: Number.POSITIVE_INFINITY},
+      label: {text:name,font:"bold 15px sans-serif",fillColor:Cesium.Color.WHITE,
+        outlineColor:Cesium.Color.BLACK,outlineWidth:3,style:Cesium.LabelStyle.FILL_AND_OUTLINE,
+        pixelOffset:new Cesium.Cartesian2(0,-24),verticalOrigin:Cesium.VerticalOrigin.BOTTOM,
+        disableDepthTestDistance:Number.POSITIVE_INFINITY}
+    });
+    entity.studyTarget = target;
+  }
+  addStudyMarker("Catania - Sicily",(SICILY_EXTENT.west+SICILY_EXTENT.east)/2,(SICILY_EXTENT.south+SICILY_EXTENT.north)/2,"sicily");
+  addStudyMarker("Lecce - Puglia",(DEMO_EXTENT.west+DEMO_EXTENT.east)/2,(DEMO_EXTENT.south+DEMO_EXTENT.north)/2,"lecce");
 
-      hideCurrentThematicLayer();
-      showStatus("");
-      updateLegend(selectedLayer);
+  const areaSelect = document.getElementById("areaSelect");
+  const productSelect = document.getElementById("productSelect");
+  const yearSelect = document.getElementById("yearSelect");
+  const monthSelect = document.getElementById("monthSelect");
+  const lecceSelect = document.getElementById("lecceSelect");
+  const showLayer = document.getElementById("showLayer");
+  for (let year=2017;year<=2024;year++) {
+    const option=document.createElement("option");option.value=String(year);option.textContent=String(year);
+    yearSelect.appendChild(option);
+  }
+  yearSelect.value="2024";
+  monthSelect.value="10";
 
-      if (selectedLayer === "none") {
-        return;
-      }
-
-      const sicilyMatch = selectedLayer.match(/^Sicily_(NDVI|Albedo)_(2017|2018|2019|2020|2021|2022|2023|2024)_(08|09|10)$/);
-      if (sicilyMatch) {
-        const product = sicilyMatch[1].toLowerCase();
-        const date = sicilyMatch[2] + "_" + sicilyMatch[3];
-        addXYZRaster("data/sicily/" + product + "/" + date + "/{z}/{x}/{y}.png");
-        // Keep geographic labels above thematic rasters.
-        layers.raiseToTop(placeLabels);
-        viewer.camera.flyTo({
-          destination: Cesium.Rectangle.fromDegrees(14.591344859, 37.238258641, 14.866149316, 37.462253642),
-          duration: 1.5
-        });
-        return;
-      }
-
-      if (selectedLayer === "Thermalanomaly_Lecce_14082024") {
-        addXYZRaster("data/thermal_anomaly/{z}/{x}/{y}.png");
-        return;
-      }
-
-      if (selectedLayer === "Land_Surface_Temperature_Lecce_14082025") {
-        addXYZRaster("data/lst/{z}/{x}/{y}.png");
-        return;
-      }
-
-      if (selectedLayer === "StatistichezonaliDT_Lecce_14082024") {
-        await loadZonalStatistics();
-      }
+  function flyToArea(area) {
+    const bounds = area === "sicily" ? SICILY_EXTENT : area === "lecce" ? DEMO_EXTENT : OVERVIEW_EXTENT;
+    viewer.camera.flyTo({destination:rectangleOf(bounds),duration:1.5});
+  }
+  async function refreshThematicLayer() {
+    hideCurrentThematicLayer();
+    showStatus("");
+    const area=areaSelect.value;
+    const key=area==="sicily"
+      ? `Sicily_${productSelect.value}_${yearSelect.value}_${monthSelect.value}`
+      : lecceSelect.value;
+    updateLegend(showLayer.checked ? key : "none");
+    if (!showLayer.checked) return;
+    if (area==="sicily") {
+      addXYZRaster(`data/sicily/${productSelect.value.toLowerCase()}/${yearSelect.value}_${monthSelect.value}/{z}/{x}/{y}.png`);
+      layers.raiseToTop(placeLabels);
+    } else if (key==="Thermalanomaly_Lecce_14082024") {
+      addXYZRaster("data/thermal_anomaly/{z}/{x}/{y}.png");layers.raiseToTop(placeLabels);
+    } else if (key==="Land_Surface_Temperature_Lecce_14082025") {
+      addXYZRaster("data/lst/{z}/{x}/{y}.png");layers.raiseToTop(placeLabels);
+    } else if (key==="StatistichezonaliDT_Lecce_14082024") {
+      await loadZonalStatistics();
     }
-  );
+  }
+  function chooseArea(area,moveCamera=true) {
+    areaSelect.value=area;
+    document.getElementById("sicilyControls").hidden=area!=="sicily";
+    document.getElementById("lecceControls").hidden=area!=="lecce";
+    if(moveCamera)flyToArea(area);
+    refreshThematicLayer();
+  }
+  function stepDate(delta) {
+    const index=(Number(yearSelect.value)-2017)*3+["08","09","10"].indexOf(monthSelect.value);
+    const next=Math.max(0,Math.min(23,index+delta));
+    yearSelect.value=String(2017+Math.floor(next/3));
+    monthSelect.value=["08","09","10"][next%3];
+    refreshThematicLayer();
+  }
+  document.getElementById("goOverview").addEventListener("click",()=>flyToArea("overview"));
+  document.getElementById("goSicily").addEventListener("click",()=>chooseArea("sicily"));
+  document.getElementById("goLecce").addEventListener("click",()=>chooseArea("lecce"));
+  document.getElementById("prevDate").addEventListener("click",()=>stepDate(-1));
+  document.getElementById("nextDate").addEventListener("click",()=>stepDate(1));
+  areaSelect.addEventListener("change",()=>chooseArea(areaSelect.value));
+  [productSelect,yearSelect,monthSelect,lecceSelect,showLayer].forEach(el=>el.addEventListener("change",refreshThematicLayer));
+  chooseArea("sicily",false);
 
   const clickHandler = new Cesium.ScreenSpaceEventHandler(
     viewer.scene.canvas
@@ -1001,11 +1002,15 @@
 
   clickHandler.setInputAction(
     function(click) {
+      const picked = viewer.scene.pick(click.position);
+      if (Cesium.defined(picked) && picked.id && picked.id.studyTarget) {
+        chooseArea(picked.id.studyTarget);
+        return;
+      }
       if (!zonalDataSource || !zonalDataSource.show) {
         return;
       }
 
-      const picked = viewer.scene.pick(click.position);
 
       if (!Cesium.defined(picked) || !picked.id) {
         clearSelection();
